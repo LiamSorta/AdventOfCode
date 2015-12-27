@@ -1,3 +1,4 @@
+//http://adventofcode.com/day/1
 #include <iostream>
 #include <string>
 
