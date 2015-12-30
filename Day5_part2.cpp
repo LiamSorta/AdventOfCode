@@ -21,7 +21,7 @@ int main(){
 
 	while (getline(input, word)){
 
-		if (HasPair(word) && HasRepeat(word){
+		if (HasPair(word) && HasRepeat(word)){
 			niceStrings++;	
 		}
 	}
@@ -47,6 +47,7 @@ bool HasPair(string word){
 	//al	ai	 [aa]	am
 	//ml	mi	  ma   [mm]
 
+	//Then checks the distance between the pair to discount overlaps
 
 	vector<string> lol;
 	for (int i = 0; i < word.length(); i++){
@@ -58,18 +59,13 @@ bool HasPair(string word){
 
 	for (int i = 0; i < lol.size(); i++){
 		for (int b = 0; b < lol.size(); b++){
-			if (lol[i] == lol[b] && i != b && ((i == 0 || b == 0))){
-				if (lol[i] != lol[i + 1] && lol[b] != lol[b + 1]){
+			if (lol[i] == lol[b] && i != b){
+				if (b - i > 1){
 					cout << lol[i] << " \t";
 					return true;
 				}
 			}
-			else if (lol[i] == lol[b] && i != b && lol[i] != lol[i - 1] && lol[b] != lol[b - 1]){
-				cout << lol[i] << " \t";
-				return true;
-			}
 		}
-	
 	}
 	
 	return false;
